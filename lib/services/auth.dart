@@ -6,6 +6,8 @@ abstract class AuthBase {
   User? get currentUser;
   Future<User?> signInWithGoogle();
   Future<void> signOut();
+  Future<User?> signInWithEmailAndPassword(String email, String password);
+  Future<User?> createAccountWithEmailAndPassword(String email, String password);
 }
 
 class Auth implements AuthBase {
@@ -21,9 +23,11 @@ class Auth implements AuthBase {
   Future<User?> signInWithGoogle() async {
     print("Google Sign In called");
     final GoogleSignIn googleSignIn = GoogleSignIn();
-    // TODO: See what happens after defining scopes
     // final GoogleSignIn googleSignIn = GoogleSignIn(scopes: ["profile", "email"]);
+    // default signin scopes already have "profile" and "email" scopes
+
     final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+    print(googleSignInAccount.toString());
     if (googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
       if (googleSignInAuthentication.idToken != null) {
@@ -39,9 +43,31 @@ class Auth implements AuthBase {
   }
 
   @override
+  Future<User?> signInWithEmailAndPassword(String email, String password) async {
+    final UserCredential authUser = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    return authUser.user;
+  }
+
+  @override
+  Future<User?> createAccountWithEmailAndPassword(String email, String password) async {
+    final UserCredential authUser = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    return authUser.user;
+  }
+
+  @override
   Future<void> signOut() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     await googleSignIn.signOut();
     await _firebaseAuth.signOut();
   }
+}
+
+class SignInException extends FirebaseAuthException {
+  final String code;
+  final String? message;
+  SignInException({required this.code, this.message})
+      : super(
+          code: code,
+          message: message,
+        );
 }

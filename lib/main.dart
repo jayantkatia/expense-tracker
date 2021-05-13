@@ -16,12 +16,26 @@ class MyApp extends StatelessWidget {
     return Provider<AuthBase>(
       create: (context) => Auth(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Expense Tracker',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.pink,
+          accentColor: Color(0xffff3378),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            centerTitle: true,
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 21.0,
+              ),
+            ),
+          ),
         ),
         home: LandingPage(),
       ),
     );
   }
+
+  // MaterialColor appPink = MaterialAccentColor(0xffff3378, <int, Color>{400: Color(0xffff3378)}) as MaterialColor;
 }

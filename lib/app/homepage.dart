@@ -11,11 +11,11 @@ class HomePage extends StatelessWidget {
         title: Text("Home Page"),
         actions: [
           TextButton(
-              onPressed: auth.signOut,
-              child: Text(
-                "Sign Out",
-                style: TextStyle(color: Colors.white),
-              ))
+            onPressed: auth.signOut,
+            child: Text(
+              "Sign Out",
+            ),
+          )
         ],
       ),
     );
