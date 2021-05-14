@@ -39,7 +39,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
 
   void _toggleForm() async {
     setState(() {
-      signInFormType = signInFormType == SignInFormType.register ? SignInFormType.signIn : SignInFormType.register;
+      signInFormType = signInFormType == SignInFormType.register
+          ? SignInFormType.signIn
+          : SignInFormType.register;
     });
     _emailTextController.clear();
     _passwordTextController.clear();
@@ -56,8 +58,12 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
 
   @override
   Widget build(BuildContext context) {
-    final String primaryText = signInFormType == SignInFormType.signIn ? 'Sign In With Account' : 'Register Account';
-    final String secondaryText = signInFormType == SignInFormType.signIn ? 'Need an account? Register' : 'Have an account? Sign In';
+    final String primaryText = signInFormType == SignInFormType.signIn
+        ? 'Sign In With Account'
+        : 'Register Account';
+    final String secondaryText = signInFormType == SignInFormType.signIn
+        ? 'Need an account? Register'
+        : 'Have an account? Sign In';
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -92,6 +98,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
             outlineColor: Colors.white,
             textColor: Colors.white,
             onPressed: _isLoading ? null : _submit,
+            borderRadius: 40,
           ),
           SizedBox(height: 20),
           TextButton(

@@ -6,12 +6,16 @@ class CustomOutLineSocialButton extends CustomElevatedButton {
   final VoidCallback? onPressed;
   final String? assetName;
   final Color outlineColor;
+  final Color backgroundColor;
+  final Color textColor;
 
   CustomOutLineSocialButton({
     required this.text,
     required this.onPressed,
     this.assetName,
     required this.outlineColor,
+    this.backgroundColor: Colors.white,
+    this.textColor: Colors.white,
   }) : super(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -40,8 +44,9 @@ class CustomOutLineSocialButton extends CustomElevatedButton {
             ],
           ),
           onPressed: onPressed,
-          borderRadius: 8.0,
+          borderRadius: 40.0,
           outlineColor: outlineColor,
           textColor: outlineColor,
+          color: backgroundColor,
         );
 }
