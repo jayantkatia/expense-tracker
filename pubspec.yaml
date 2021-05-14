@@ -31,6 +31,8 @@ dependencies:
   provider: ^5.0.0
   google_sign_in: ^5.0.2
   firebase_core: ^1.1.1
+  animated_bottom_navigation_bar: ^0.3.2
+  flutter_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:
