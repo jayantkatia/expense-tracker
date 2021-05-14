@@ -4,6 +4,7 @@ import 'package:expense_tracker/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:expense_tracker/app/email_sign_in_page.dart';
 
 class LandingPage extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class LandingPage extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.active) {
           final User? user = snapshot.data;
           if (user == null)
-            return SignInPage();
+            return EmailSignInPage();
           else
             return HomePage();
         } else {
