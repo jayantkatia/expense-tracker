@@ -2,11 +2,13 @@ import 'package:expense_tracker/app/landing_page.dart';
 import 'package:expense_tracker/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.blue));
   runApp(MyApp());
 }
 
@@ -18,8 +20,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Expense Tracker',
         theme: ThemeData(
-          primarySwatch: Colors.pink,
-          accentColor: Color(0xffff3378),
+          primarySwatch: Colors.pink /*Colors.blue*/,
+          accentColor: Color(0xffff3378) /*Colors.blue[900]*/,
           appBarTheme: AppBarTheme(
             backgroundColor: Colors.white,
             centerTitle: true,
@@ -36,6 +38,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-
-  // MaterialColor appPink = MaterialAccentColor(0xffff3378, <int, Color>{400: Color(0xffff3378)}) as MaterialColor;
 }

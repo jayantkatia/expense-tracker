@@ -1,4 +1,4 @@
-import 'package:expense_tracker/app/homepage.dart';
+import 'package:expense_tracker/Dashboard.dart';
 import 'package:expense_tracker/app/sign_in_page.dart';
 import 'package:expense_tracker/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,7 +18,7 @@ class LandingPage extends StatelessWidget {
           if (user == null)
             return SignInPage();
           else
-            return HomePage();
+            return Dashboard();
         } else {
           return Scaffold(
             body: Center(child: CircularProgressIndicator()),

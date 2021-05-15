@@ -1,22 +1,16 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:expense_tracker/homeaddbudgetexpense.dart';
+import 'package:expense_tracker/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: RootApp(),
-  ));
-}
-
-class RootApp extends StatefulWidget {
+class Dashboard extends StatefulWidget {
   @override
-  _RootAppState createState() => _RootAppState();
+  _DashboardState createState() => _DashboardState();
 }
 
-class _RootAppState extends State<RootApp> {
+class _DashboardState extends State<Dashboard> {
   int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -36,6 +30,8 @@ class _RootAppState extends State<RootApp> {
   }
 
   Widget getBody() {
+    final AuthBase auth = Provider.of<AuthBase>(context);
+
     return IndexedStack(
       index: pageIndex,
       children: [
@@ -50,21 +46,29 @@ class _RootAppState extends State<RootApp> {
           child: Text("delete"),
         ),
         Center(
-          child: Text("settings"),
+          child: TextButton(
+            onPressed: auth.signOut,
+            child: Text(
+              "Sign Out",
+            ),
+          ),
         ),
-        Center(
-          child: Text("Add"),
-        ),
+        HomeAddBudgetExpense(),
       ],
     );
   }
 
   Widget getFooter() {
     List<IconData> iconItems = [
-      Ionicons.md_home,
-      Ionicons.md_download,
-      Ionicons.md_trash,
-      Ionicons.md_settings,
+      Icons.home,
+      Icons.download,
+      Icons.delete,
+      Icons.settings
+
+      // Ionicons.md_home,
+      // Ionicons.md_download,
+      // Ionicons.md_trash,
+      // Ionicons.md_settings,
     ];
     return AnimatedBottomNavigationBar(
       activeColor: Colors.blue[600],
@@ -97,7 +101,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var selection = null;
-  String sort = "";
+  String sort = "Recent";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
