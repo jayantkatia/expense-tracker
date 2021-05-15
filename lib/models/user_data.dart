@@ -1,7 +1,7 @@
 class UserData {
-  UserData({required this.name, required this.email, this.imgUrl});
-  final String name, email;
-  final String? imgUrl;
+  UserData({required this.name, required this.email, required this.currency, this.documentId}) : symbol = currency[0];
+  final String name, email, currency, symbol;
+  final String? documentId;
 
   factory UserData.fromMap(Map<String, dynamic>? data, String documentId) {
     if (data == null) {
@@ -9,11 +9,12 @@ class UserData {
     }
     final String name = data['name'];
     final String email = data['email'];
-    final String? imgUrl = data['imgUrl'];
+    final String currency = data['currency'];
     return UserData(
       name: name,
       email: email,
-      imgUrl: imgUrl,
+      currency: currency,
+      documentId: documentId,
     );
   }
 
@@ -21,10 +22,10 @@ class UserData {
     return {
       'name': name,
       'email': email,
-      'imgUrl': imgUrl,
+      'currency': currency,
     };
   }
 
   @override
-  String toString() => '<UserData> name: $name, email: $email, imgUrl: $imgUrl';
+  String toString() => '<UserData> name: $name, email: $email, currency: $currency, documentId: $documentId';
 }

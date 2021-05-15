@@ -1,7 +1,8 @@
 class Budget {
-  Budget({required this.name, required this.amount, required this.startDate, required this.endDate});
+  Budget({required this.name, required this.amount, required this.startDate, required this.endDate, this.documentId});
 
   final String name;
+  final String? documentId;
   final double amount;
   final DateTime startDate, endDate;
 
@@ -19,6 +20,7 @@ class Budget {
       amount: amount,
       startDate: startDate,
       endDate: endDate,
+      documentId: documentId,
     );
   }
   Map<String, dynamic> toMap() {
@@ -31,5 +33,5 @@ class Budget {
   }
 
   @override
-  String toString() => '<Budget> name: $name, amount: $amount, startDate: $startDate, endDate: $endDate';
+  String toString() => '<Budget> name: $name, amount: $amount, startDate: $startDate, endDate: $endDate, documentId: $documentId';
 }

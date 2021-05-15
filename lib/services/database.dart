@@ -5,7 +5,23 @@ import 'package:expense_tracker/services/api_path.dart';
 import 'package:expense_tracker/services/firestore_service_class.dart';
 
 abstract class Database {
+  // get Collection queries
+  Stream<List<Budget>> getBudgets();
+  Stream<List<Expense>> getExpenses({required String budgetId});
+
+  // get Document queries
   Stream<UserData> getUserData();
+  Stream<Budget> getBudget({required String budgetId});
+  Stream<Expense> getExpense({required String budgetId, required String expenseId});
+
+  // set(create/update) queries
+  Future<void> setUserData({required UserData userData});
+  Future<void> setBudget({required Budget budget});
+  Future<void> setExpense({required Expense expense});
+
+  // delete queries
+  Future<void> deleteBudget({required String budgetId});
+  Future<void> deleteExpense({required String budgetId, required String expenseId});
 }
 
 class FirestoreDatabase implements Database {
@@ -52,7 +68,7 @@ class FirestoreDatabase implements Database {
       );
 
   // delete queries
-  Future<void> deleteBudget({required String budgetId, required String expenseId}) => _service.deleteData(
+  Future<void> deleteBudget({required String budgetId}) => _service.deleteData(
         path: APIPath.budget(uid: uid, budgetId: budgetId),
       );
   Future<void> deleteExpense({required String budgetId, required String expenseId}) => _service.deleteData(

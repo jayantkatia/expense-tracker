@@ -1,6 +1,7 @@
 class Expense {
-  Expense({required this.name, required this.amount, required this.date, required this.category});
+  Expense({required this.name, required this.amount, required this.date, required this.category, this.documentId});
   final String name, category;
+  final String? documentId;
   final double amount;
   final DateTime date;
 
@@ -18,6 +19,7 @@ class Expense {
       amount: amount,
       category: category,
       date: date,
+      documentId: documentId,
     );
   }
 
@@ -31,5 +33,5 @@ class Expense {
   }
 
   @override
-  String toString() => '<Expense> name: $name, amount: $amount, category: $category, date: $date';
+  String toString() => '<Expense> name: $name, amount: $amount, category: $category, date: $date, documentId: $documentId';
 }
