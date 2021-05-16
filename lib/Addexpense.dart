@@ -75,7 +75,7 @@ Widget Body(){
                             },
                                 child: Icon(Icons.arrow_back, color: Colors.black) ),
                             SizedBox(width: 30),
-                            Text("Add Budget",style: TextStyle(
+                            Text("Add Expense",style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: ("Monserrat"),
                               fontSize: 30,
