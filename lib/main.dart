@@ -1,6 +1,7 @@
+import 'package:expense_tracker/addBudgetExpense.dart';
 import 'package:expense_tracker/app/landing_page.dart';
-import 'package:expense_tracker/homeaddbudgetexpense.dart';
 import 'package:expense_tracker/services/auth.dart';
+import 'package:expense_tracker/updateBudget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,26 +18,12 @@ class MyApp extends StatelessWidget {
     return Provider<AuthBase>(
       create: (context) => Auth(),
       child: MaterialApp(
-        title: 'Expense Tracker',
+        title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.pink,
-          accentColor: Color(0xffff3378),
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.white,
-            centerTitle: true,
-            textTheme: TextTheme(
-              headline6: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 21.0,
-              ),
-            ),
-          ),
+          primarySwatch: Colors.blue,
         ),
-        home: HomeAddBudgetExpense(),
+        home: UpdateBudget(),
       ),
     );
   }
-
-  // MaterialColor appPink = MaterialAccentColor(0xffff3378, <int, Color>{400: Color(0xffff3378)}) as MaterialColor;
 }
