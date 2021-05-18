@@ -20,9 +20,27 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
+<<<<<<< HEAD
           primarySwatch: Colors.blue,
         ),
         home: UpdateBudget(),
+=======
+          primarySwatch: Colors.blue /*Colors.pink*/,
+          accentColor: Colors.blue[800] /*Color(0xffff3378)*/,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            centerTitle: true,
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 21.0,
+              ),
+            ),
+          ),
+        ),
+        home: LandingPage(),
+>>>>>>> ed9742d06040f278df114e9d5d6d1a21a5caecb7
       ),
     );
   }

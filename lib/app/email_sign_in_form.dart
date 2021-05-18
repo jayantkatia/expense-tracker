@@ -31,7 +31,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       } else {
         await auth.signInWithEmailAndPassword(_email, _password);
       }
-      Navigator.of(context).pop();
+      // Navigator.of(context).pop();
     } on SignInException {} finally {
       setState(() => _isLoading = false);
     }
@@ -92,6 +92,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
             outlineColor: Colors.white,
             textColor: Colors.white,
             onPressed: _isLoading ? null : _submit,
+            borderRadius: 40,
           ),
           SizedBox(height: 20),
           TextButton(
