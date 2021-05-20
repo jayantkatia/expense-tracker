@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: addbudget(),
-  ));
-}
 // ignore: camel_case_types
-class addbudget extends StatefulWidget {
+class editexpense extends StatefulWidget {
   @override
-  _addbudgetState createState() => _addbudgetState();
+  _editexpenseState createState() => _editexpenseState();
 }
 
-class _addbudgetState extends State<addbudget> {
+class _editexpenseState extends State<addbudget> {
   var selection;
   String selectcat;
   DateTime selectedDate = DateTime.now();
