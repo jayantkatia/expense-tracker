@@ -8,7 +8,7 @@ class editexpense extends StatefulWidget {
   _editexpenseState createState() => _editexpenseState();
 }
 
-class _editexpenseState extends State<addbudget> {
+class _editexpenseState extends State<editexpense> {
   var selection;
   String selectcat;
   DateTime selectedDate = DateTime.now();
