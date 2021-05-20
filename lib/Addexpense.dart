@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
-class addbudget extends StatefulWidget {
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: addexpense(),
+  ));
+}
+class addexpense extends StatefulWidget {
   @override
-  _addbudgetState createState() => _addbudgetState();
+  _addexpenseState createState() => _addexpenseState();
 }
 
-class _addbudgetState extends State<addbudget> {
+class _addexpenseState extends State<addexpense> {
   var selection;
   String selectcat;
   DateTime selectedDate = DateTime.now();
@@ -42,6 +49,7 @@ class _addbudgetState extends State<addbudget> {
   }
 
   Widget Body() {
+    String _formatDate=new DateFormat.yMMMd().format(selectedDate);
     return SingleChildScrollView(
       child: Stack(
         children: [
@@ -196,7 +204,7 @@ class _addbudgetState extends State<addbudget> {
                         ),
                       ),
                       SizedBox(height: 30),
-                      Text(selectedDate.toString()),
+                      Text('$_formatDate'),
                       // ignore: deprecated_member_use
                       RaisedButton(
                         onPressed: () => _selectDate(context),
